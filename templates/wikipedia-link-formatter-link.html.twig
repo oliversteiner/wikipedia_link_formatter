@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ * Default theme implementation of a link with separate title and URL elements.
+ *
+ * Available variables:
+ * - link: The link that has already been formatted by l().
+ * - title: (optional) A descriptive or alternate title for the link, which may
+ *   be different than the actual link text.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_wikipedia_link_formatter_link()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+
+        {% if  link is not empty %}
+
+            {# Container #}
+            <div class="wikipedia-link-container">
+
+                <div>
+                    {# title #}
+                    <span class="wikipedia-link-title">
+                    Dieser Text basiert auf dem Artikel
+                    </span>
+
+                    {# Link #}
+                    <span class="wikipedia-link">
+                    {% if title is not empty %}
+                        <a rel="nofollow" href='{{ link }}'><i class="fab fa-wikipedia-w"></i> {{ title }}</a>
+                    {% else %}
+                        <a rel="nofollow" href='{{ link }}'><i class="fab fa-wikipedia-w"></i> {{ link }}</a>
+                    {% endif %}
+                </span>
+
+                </div>
+
+                {# Copy #}
+                <div class="wikipedia-link-copyright">
+                    aus der freien Enzyklopädie
+                    <a rel="nofollow" class="" href="http://de.wikipedia.org/wiki/Wikipedia:Hauptseite">Wikipedia</a>
+                    und steht unter der Lizenz von
+                    <i>Creative Commons</i>
+                    <a rel="nofollow" href="http://creativecommons.org/licenses/by-sa/3.0/de/legalcode">[CC-BY-SA
+                        3.0]</a>
+                    <a rel="nofollow" class=""
+                       href="http://creativecommons.org/licenses/by-sa/3.0/de/">[Kurzfassung]</a>.
+                </div>
+
+                {# Authors #}
+                <div class="wikipedia-link-authors">
+                    Der Text wurde minimal angepasst.
+                    In der Wikipedia ist eine Liste der Autoren verfügbar.
+                </div>
+            </div>
+
+        {% endif %}

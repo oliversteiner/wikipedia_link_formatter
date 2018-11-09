@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Contains wikipedia_link_formatter.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function wikipedia_link_formatter_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the field_wikipedia_link module.
+    case 'help.page.wikipedia_link_formatter':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides a Link Formatter for  Wikipedia links with copyright information') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function wikipedia_link_formatter_theme() {
+    return [
+        'wikipedia_link_formatter_link' => [
+            'variables' => ['title' => NULL, 'url_title' => NULL, 'url' => NULL],
+        ],
+    ];
+}
+
+/**
+ * Prepares variables for separated link field templates.
+ *
+ * This template outputs a separate title and link.
+ *
+ * Default template: wikipedia-link-formatter-link.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - title: (optional) A descriptive or alternate title for the link, which
+ *     may be different than the actual link text.
+ *   - url_title: The anchor text for the link.
+ *   - url: A \Drupal\Core\Url object.
+ */
+function template_preprocess_wikipedia_link_formatter_link(&$variables) {
+    $variables['link'] = \Drupal::l($variables['url_title'], $variables['url']);
+}
