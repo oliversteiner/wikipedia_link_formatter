@@ -1,9 +1,9 @@
 {
   "name": "drupal/wikipedia_link_formatter",
   "type": "drupal-module",
-  "description": "Provides a field for Wikipedia links with copyright information",
+  "description": "Provides a link field formater for wikipedia links with copyright information",
   "keywords": ["Drupal"],
-  "license": "GPL-2.0+",
+  "license": "GPL-3.0+",
   "homepage": "https://www.drupal.org/project/wikipedia_link_formatter",
   "minimum-stability": "dev",
   "support": {
